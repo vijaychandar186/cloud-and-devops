@@ -1,0 +1,33 @@
+Lab smoke test started at 2026-03-23T04:09:14Z
+Range: lab-05 to lab-05
+Timeout per script: 20s
+Run cleanup: 1
+
+Prerequisite binaries:
+OK      aws (/usr/local/bin/aws)
+OK      docker (/usr/bin/docker)
+OK      localstack (/usr/local/bin/localstack)
+MISSING terraform
+OK      ansible-playbook (/usr/local/py-utils/bin/ansible-playbook)
+OK      kubectl (/usr/local/bin/kubectl)
+OK      kind (/usr/local/bin/kind)
+OK      python3 (/usr/bin/python3)
+OK      mvn (/usr/local/sdkman/candidates/maven/current/bin/mvn)
+OK      gradle (/usr/local/sdkman/candidates/gradle/current/bin/gradle)
+
+
+=== lab-05-linux-commands-scripting ===
+PASS  lab-05-linux-commands-scripting/01-hello-world.sh
+PASS  lab-05-linux-commands-scripting/02-variables.sh
+PASS  lab-05-linux-commands-scripting/03-redirection.sh
+PASS  lab-05-linux-commands-scripting/04-factorial.sh
+PASS  lab-05-linux-commands-scripting/05-palindrome.sh
+
+=== Per-lab summary ===
+lab-05-linux-commands-scripting	steps=5	pass=5	fail=0
+
+=== Failed steps ===
+
+Output directory: tests/output/latest-wrapper-test
+Summary TSV:      tests/output/latest-wrapper-test/summary.tsv
+Summary text:     tests/output/latest-wrapper-test/summary.txt

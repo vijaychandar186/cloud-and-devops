@@ -23,6 +23,9 @@ exercises/lab-16-hybrid-multi-vendor/terraform/hybrid-manifest.json
 **/__pycache__/
 **/*.pyc
 
+# Test runner output
+tests/output/
+
 # Editor / OS
 .DS_Store
 Thumbs.db
