@@ -1,0 +1,9 @@
+---
+# handlers/main.yml — webserver role
+# Handlers are only triggered when notified by a task that reports a change.
+
+- name: restart apache2
+  service:
+    name: apache2
+    state: restarted
+  ignore_errors: "{{ ansible_check_mode }}"

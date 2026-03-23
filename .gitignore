@@ -1,0 +1,30 @@
+# Environment / credentials
+exercises/.env
+*.pem
+*.csv
+*.tfvars
+!*.tfvars.example
+
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/tfplan
+
+# LocalStack / lab state
+exercises/localstack-data/
+exercises/.lab0*-state
+
+# Docker
+**/lab*-image/
+**/__pycache__/
+**/*.pyc
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/settings.json

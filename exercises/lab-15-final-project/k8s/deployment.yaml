@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab15-app
+  namespace: lab15
+  labels:
+    app: lab15-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab15-app
+  template:
+    metadata:
+      labels:
+        app: lab15-app
+    spec:
+      containers:
+        - name: app
+          image: lab15-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: lab15-config
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5

@@ -1,0 +1,27 @@
+{
+	"name": "Ubuntu",
+	"dockerComposeFile": "docker-compose.yaml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/localstack/devcontainer-feature/localstack-cli:0": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers-extra/features/ansible:2": {},
+		"ghcr.io/devcontainers-extra/features/terraform-asdf:2": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers-extra/features/kind:1": {},
+		"ghcr.io/devcontainers/features/java:1": { "version": "17" },
+		"ghcr.io/devcontainers-extra/features/gradle:1": {},
+		"ghcr.io/devcontainers-extra/features/maven:1": {}
+	},
+	"forwardPorts": [4566, 8080, 50000, 10000, 10001],
+	"portsAttributes": {
+		"4566":  {"label": "LocalStack",                    "onAutoForward": "silent"},
+		"8080":  {"label": "Jenkins UI",                    "onAutoForward": "notify"},
+		"50000": {"label": "Jenkins Agent",                 "onAutoForward": "silent"},
+		"10000": {"label": "Azurite Blob Storage (HTTP)",   "onAutoForward": "silent"},
+		"10001": {"label": "Azurite Blob Storage (HTTPS)",  "onAutoForward": "silent"}
+	}
+}

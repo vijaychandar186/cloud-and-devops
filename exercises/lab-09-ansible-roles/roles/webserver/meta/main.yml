@@ -1,0 +1,17 @@
+---
+# meta/main.yml — webserver role
+# Metadata used by Ansible Galaxy and for dependency resolution.
+
+galaxy_info:
+  author: cloud-and-devops-labs
+  description: Installs and configures Apache with a Jinja2-templated homepage.
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+
+dependencies: []

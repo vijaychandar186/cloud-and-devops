@@ -1,0 +1,22 @@
+---
+# tasks/main.yml — webserver role
+# Installs Apache, deploys index.html from a Jinja2 template, and sets permissions.
+
+- name: Install Apache web server
+  apt:
+    name: apache2
+    state: present
+
+- name: Create index.html file
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: restart apache2
+
+- name: Set ownership and permissions on index.html
+  file:
+    path: /var/www/html/index.html
+    owner: "{{ web_owner }}"
+    group: "{{ web_group }}"
+    mode: "0644"
+  ignore_errors: "{{ ansible_check_mode }}"

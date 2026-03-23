@@ -1,0 +1,18 @@
+{
+  "Rules": [
+    {
+      "ID": "transition-to-ia",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "" },
+      "Transitions": [
+        {
+          "Days": 30,
+          "StorageClass": "STANDARD_IA"
+        }
+      ],
+      "Expiration": {
+        "Days": 365
+      }
+    }
+  ]
+}

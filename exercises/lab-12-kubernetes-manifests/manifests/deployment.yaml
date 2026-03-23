@@ -1,0 +1,26 @@
+apiVersion: apps/v1        # API group and version — "apps/v1" contains Deployment, DaemonSet, StatefulSet
+kind: Deployment           # The type of Kubernetes object to create
+metadata:
+  name: lab12-nginx        # Unique name within the namespace
+  namespace: lab12         # Namespace this resource belongs to (created by namespace.yaml)
+  labels:
+    app: lab12-nginx       # Arbitrary key/value pairs for organising and selecting resources
+spec:
+  replicas: 2              # Desired number of Pod copies; Kubernetes maintains this count continuously
+  selector:
+    matchLabels:
+      app: lab12-nginx     # The Deployment manages Pods whose labels match this selector
+  template:                # Pod template — every Pod created by this Deployment looks like this
+    metadata:
+      labels:
+        app: lab12-nginx   # Must match spec.selector.matchLabels above
+    spec:
+      containers:
+        - name: nginx          # Container name (used in logs and exec commands)
+          image: nginx:alpine  # Docker image; alpine variant is smaller (~20 MB)
+          ports:
+            - containerPort: 80  # Informational; does not publish the port (that is the Service's job)
+          envFrom:
+            - configMapRef:
+                name: lab12-config  # Inject all keys from the ConfigMap as environment variables
+                                    # APP_ENV and APP_VERSION will be visible inside the container

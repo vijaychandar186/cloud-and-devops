@@ -1,0 +1,12 @@
+---
+# site.yml — top-level playbook for Lab 09
+# Applies the webserver role to localhost.
+# To target real remote hosts, replace 'localhost' with a group name
+# from your inventory and remove 'connection: local'.
+
+- name: Configure web servers using the webserver role
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - webserver

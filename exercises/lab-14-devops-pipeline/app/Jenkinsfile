@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "lab14-server"
+        IMAGE_TAG  = "${env.BUILD_NUMBER ?: 'latest'}"
+        CONTAINER_PORT = "8888"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Checking out source code from SCM..."
+                checkout scm
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running unit tests..."
+                sh 'python3 -m pytest app/test_server.py -v || python3 -m unittest discover -s app -p "test_*.py" -v'
+            }
+            post {
+                always {
+                    echo "Test stage complete."
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker image: ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} app/"
+                sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                echo "Running container smoke test..."
+                sh """
+                    docker run -d --name lab14-smoke -p 18888:8888 ${IMAGE_NAME}:latest
+                    sleep 3
+                    curl -sf http://localhost:18888/health
+                    docker stop lab14-smoke && docker rm lab14-smoke
+                """
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying container..."
+                sh """
+                    docker stop lab14-server 2>/dev/null || true
+                    docker rm   lab14-server 2>/dev/null || true
+                    docker run -d --name lab14-server -p 8888:8888 ${IMAGE_NAME}:latest
+                """
+                echo "Deployed at http://localhost:8888"
+            }
+        }
+    }
+
+    post {
+        success { echo "Pipeline succeeded." }
+        failure { echo "Pipeline failed — check logs above." }
+        always  {
+            sh 'docker stop lab14-smoke 2>/dev/null || true'
+            sh 'docker rm   lab14-smoke 2>/dev/null || true'
+        }
+    }
+}

@@ -1,0 +1,8 @@
+---
+# defaults/main.yml — webserver role
+# Default variable values. These have the lowest precedence and can be
+# overridden by inventory vars, group_vars, host_vars, or play vars.
+
+page_title: "Hello from Ansible Role!"
+web_owner: www-data
+web_group: www-data
