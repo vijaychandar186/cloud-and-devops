@@ -13,6 +13,7 @@ services:
     container_name: azurite
     image: mcr.microsoft.com/azure-storage/azurite:latest
     restart: unless-stopped
+    command: azurite --skipApiVersionCheck --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0
     volumes:
       - azurite-data:/data
     network_mode: service:app

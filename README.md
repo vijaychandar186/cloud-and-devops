@@ -1,6 +1,6 @@
 # cloud-and-devops
 
-Hands-on cloud and DevOps labs using local emulators — no cloud account required.
+Hands-on cloud and DevOps labs using local emulators and local tooling — no cloud account required.
 
 ## Devcontainer Setup
 
@@ -60,6 +60,7 @@ curl -s http://localhost:4566/_localstack/health | python3 -m json.tool
 | [lab-13](exercises/lab-13-cicd-tools/) | Git, Gradle, Maven & Jenkins | Version control, Java builds, unit tests, Jenkins pipeline |
 | [lab-14](exercises/lab-14-devops-pipeline/) | Mini Project — DevOps Pipeline | Docker build, unit tests, smoke test, container deploy, health check |
 | [lab-15](exercises/lab-15-final-project/) | Final Mini Project | Terraform (LocalStack), Docker, Kubernetes (kind), end-to-end pipeline |
+| [lab-16](exercises/lab-16-hybrid-multi-vendor/) | Terraform Hybrid Multi-Vendor | LocalStack + Azurite, shared manifest across AWS-style and Azure-style storage |
 
 Run labs in order. Each lab has numbered scripts in its `scripts/` folder:
 

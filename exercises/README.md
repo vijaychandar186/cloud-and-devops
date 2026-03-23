@@ -1,7 +1,7 @@
-# AWS Simulation Labs (LocalStack)
+# Cloud Simulation Labs (LocalStack + Azurite)
 
-Hands-on labs that simulate real AWS workflows locally using [LocalStack](https://localstack.cloud/).
-No AWS account required — everything runs in Docker.
+Hands-on labs that simulate cloud workflows locally using [LocalStack](https://localstack.cloud/)
+and Azurite. No cloud account required — everything runs in Docker.
 
 ## Prerequisites
 
@@ -9,6 +9,8 @@ All tools are pre-installed in the devcontainer (see root [README](../README.md)
 - Docker (via Docker-in-Docker feature)
 - AWS CLI v2
 - LocalStack CLI
+- Azure CLI
+- Azurite
 
 ## Start LocalStack
 
@@ -29,6 +31,7 @@ You should see `"s3": "running"`, `"ec2": "running"`, `"iam": "running"`, `"sts"
 | [lab-01-aws-environment](lab-01-aws-environment/README.md) | Creating an AWS Environment | VPC, subnets, S3, EC2 |
 | [lab-02-access-keys-cli](lab-02-access-keys-cli/README.md) | Access Keys & AWS CLI | IAM users, programmatic access, key rotation |
 | [lab-03-iam-security](lab-03-iam-security/README.md) | IAM & Security Configuration | Groups, policies, roles, least privilege |
+| [lab-16-hybrid-multi-vendor](lab-16-hybrid-multi-vendor/README.md) | Terraform Hybrid Multi-Vendor | LocalStack + Azurite, shared manifest and multi-cloud workflow |
 
 Run the labs in order — later labs reference resources created earlier.
 
