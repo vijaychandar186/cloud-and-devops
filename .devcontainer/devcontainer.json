@@ -7,7 +7,7 @@
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
 		"ghcr.io/localstack/devcontainer-feature/localstack-cli:0": {},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:3": {},
 		"ghcr.io/devcontainers-extra/features/ansible:2": {},
 		"ghcr.io/devcontainers-extra/features/terraform-asdf:2": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
